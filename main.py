@@ -7,14 +7,13 @@ class App(badge.BaseApp):
 
     def on_open(self) -> None:
         badge.utils.set_led(1)
-        badge.display.fill(1)
-        badge.display.show()
+        self.draw_flashlight()        
 
-    def draw_flashlight(self) -> None:
+    def draw_flashlight(self, ) -> None:
         badge.display.fill(1)
         flashlight_lines = [
             # flashlight icon
-            ((85, 60), (85, 140))
+            ((85, 60), (85, 140)),
             ((85, 140), (115, 140)),
             ((115, 140), (115, 60)),
             ((115, 60), (85, 60)),
@@ -38,7 +37,9 @@ class App(badge.BaseApp):
         for start_point, end_point in flashlight_lines:
             x1, y1 = start_point
             x2, y2 = end_point
-            print(f"Line from ({x1}, {y1}) to ({x2}, {y2})")
+            badge.display.line(x1, y1, x2, y2, 0)
+        
+        badge.display.show()
 
     def loop(self) -> None:
         utime.sleep(1)
