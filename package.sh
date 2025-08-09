@@ -1,3 +1,3 @@
 # /bin/bash
 
-zip flashlight.zip manifest.json main.py
+zip flashlight.zip manifest.json main.py flashlight.pbm

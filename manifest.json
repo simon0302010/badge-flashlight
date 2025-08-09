@@ -1,5 +1,6 @@
 {
     "displayName": "Flashlight",
+    "logoPath": "flashlight.pbm",
     "permissions": [],
     "appNumber": 10
 }

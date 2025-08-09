@@ -9,7 +9,7 @@ class App(badge.BaseApp):
     def on_open(self) -> None:
         self.turn_on()
 
-    def draw_flashlight(self) -> None:
+    def draw_ui(self) -> None:
         badge.display.fill(1)
         flashlight_lines = [
             # flashlight icon
@@ -41,18 +41,25 @@ class App(badge.BaseApp):
             x1, y1 = start_point
             x2, y2 = end_point
             badge.display.line(x1, y1, x2, y2, 0)
+
+        badge.display.text("Press SW11 to toggle", 20, 180, 0)
         
         badge.display.show()
 
     def turn_on(self) -> None:
         badge.utils.set_led(1)
         self.led_on = 1
-        self.draw_flashlight()
+        self.draw_ui()
 
     def turn_off(self) -> None:
         badge.utils.set_led(0)
         self.led_on = 0
-        self.draw_flashlight()
+        self.draw_ui()
 
     def loop(self) -> None:
-        utime.sleep(1)
+        if badge.input.get_button(badge.input.Buttons.SW11):
+            if self.led_on:
+                self.turn_off()
+            else:
+                self.turn_on()
+        utime.sleep_ms(50)
