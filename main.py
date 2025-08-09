@@ -42,7 +42,12 @@ class App(badge.BaseApp):
             x2, y2 = end_point
             badge.display.line(x1, y1, x2, y2, 0)
 
-        badge.display.text("Press SW11 to toggle", 20, 180, 0)
+        badge.display.text("Press SW11 to toggle", 20, 160, 0)
+
+        # arrow pointing towards SW11
+        badge.display.line(180, 180, 180, 195, 0)
+        badge.display.line(175, 190, 180, 195, 0)
+        badge.display.line(185, 190, 180, 195, 0)
         
         badge.display.show()
 
